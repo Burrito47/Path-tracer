@@ -1,0 +1,23 @@
+#pragma once
+
+#include <glm/glm.hpp>
+//#include "Material.hpp"
+struct HitRecord
+{
+    glm::vec3 position;
+    glm::vec3 normal;
+
+    float t;
+
+    bool frontFace;
+
+    //Material material;
+
+    void setFaceNormal(const glm::vec3& rayDirection, const glm::vec3& outwardNormal) {
+        frontFace = glm::dot(rayDirection, outwardNormal) < 0.0f;
+
+        normal = frontFace
+            ? outwardNormal
+            : -outwardNormal;
+    }
+};
