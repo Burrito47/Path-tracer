@@ -1,5 +1,5 @@
 #include "camera.h"
-#include "ray.h"
+#include "material.h"
 #include <string>
 #include <iostream>
 
@@ -82,9 +82,9 @@ void Camera::render(const std::string& ppm, const Scene& scene)
 
 	std::cout << "Saving pixel count to " << ppm << "..." << std::endl;
 
-	int samples_per_pixel = 300;
+	int samples_per_pixel = 500;
 
-	int max_depth = 8;
+	int max_depth = 50;
 
 	for (int j = height; j >= 0; --j)
 	{
@@ -122,6 +122,8 @@ void Camera::render(const std::string& ppm, const Scene& scene)
 
 			// skriv till filen
 			file << ir << " " << ig << " " << ib << "\n";
+
+			std::cout << ir << " " << ig << " " << ib << "\n";
 
 		}
 		

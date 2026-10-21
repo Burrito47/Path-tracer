@@ -2,6 +2,7 @@
 #include <memory>
 
 
+
 Sphere::Sphere(glm::vec3 cen, float r,  std::shared_ptr<Material> m)
 {
 	center = cen;
@@ -55,7 +56,12 @@ bool Sphere::hit(const Ray& r, float t_min, float t_max, HitRecord& rec) const
 	return false;
 }
 
-
+Plane::Plane(glm::vec3 p, glm::vec3 n, glm::vec3 c, std::shared_ptr<Material> m) {
+	point = p;
+	normal = n;
+	color = c;
+	mat_ptr = m;
+}
 bool Plane::hit(const Ray& r, float t_min, float t_max, HitRecord& rec) const
 {
 	float denominator = glm::dot(r.direction(), normal);
@@ -103,7 +109,7 @@ Triangle::Triangle(glm::vec3 vert0, glm::vec3 vert1, glm::vec3 vert2, glm::vec3 
 bool Triangle::hit(const Ray& r, float t_min, float t_max, HitRecord& rec) const
 {
 	// orginal 0.0000001f men vi vill förhindra "shadow acne" därmed en mindre värde
-	const float EPSILON = 0.001f;
+	const float EPSILON = 0.0000001f;
 
 
 	glm::vec3 edge1 = v1 - v0;

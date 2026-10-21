@@ -1,11 +1,16 @@
-#pragma once
+#ifndef MATERIAL_H 
+#define MATERIAL_h
+
 
 #include "ray.h"
-#include "Shape.h"
+#include "shape.h"
 #include <glm/glm.hpp>
 #include <iostream>
+#include <cmath>
 #include <random>
 
+
+// Kolla Raytracing in one weekend bokens egna material
 
 inline float random_float()
 {
@@ -56,6 +61,8 @@ public:
 
 	bool scatter(const Ray& r_in, const HitRecord& rec, glm::vec3& attenuation, Ray& scattered) const override
 	{
+
+        // Helt random ska ljuset studsa från normal
 		glm::vec3 scatter_direction = rec.normal + random_unit_vector();
 
 		scattered = Ray(rec.p, glm::normalize(scatter_direction));
@@ -77,7 +84,7 @@ public:
 		scattered = Ray(rec.p, glm::normalize(reflected));
 		attenuation = albedo;
 
-		// true om strålen faktiskt studsar bort från ytan
+		// om strålen faktiskt studsar bort från ytan
 		return (glm::dot(scattered.direction(), rec.normal) > 0);
 	}
 };
@@ -130,7 +137,7 @@ public:
     }
 
 private:
-    // Schlicks approximation
+    // Schlicks
     static float reflectance(float cosine, float ref_idx) {
         float r0 = (1.0f - ref_idx) / (1.0f + ref_idx);
         r0 = r0 * r0;
@@ -157,3 +164,7 @@ public:
         return emit_color;
     }
 };
+
+
+
+#endif MATERIAL_H// !

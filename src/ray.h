@@ -5,7 +5,8 @@
 struct Ray
 {
 public:
-
+    glm::vec3 orig;
+    glm::vec3 dir;
     Ray() {}
 
     Ray(const glm::vec3& origin, const glm::vec3& direction) : orig(origin), dir(direction) {}
@@ -17,8 +18,5 @@ public:
         return orig + t*dir;
     }
 
-private:
 
-    glm::vec3 orig;
-    glm::vec3 dir;
 };

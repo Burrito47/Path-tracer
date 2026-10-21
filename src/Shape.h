@@ -1,8 +1,10 @@
 #pragma once
-
-#include <glm/glm.hpp>
-#include "material.h"
 #include "ray.h"
+#include <glm/glm.hpp>
+#include <memory>
+
+
+class Material;
 
 class HitRecord
 {
@@ -39,6 +41,7 @@ public:
 
 
 class Plane : public Shape {
+public:
 	glm::vec3 point;
 
 	glm::vec3 normal;
