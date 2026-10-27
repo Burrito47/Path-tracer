@@ -35,4 +35,4 @@ private:
 	glm::vec3 get_color(const Ray& r, const Scene& scene, int depth) const;
 };
 
-#endif
+#endif // update

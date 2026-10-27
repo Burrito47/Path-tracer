@@ -95,3 +95,6 @@ bool Scene::intersect(const Ray& r, float t_min, float t_max, HitRecord& rec) co
     return hit_anything;
 }
 
+
+
+// update 

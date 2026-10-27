@@ -133,3 +133,6 @@ void Camera::render(const std::string& ppm, const Scene& scene)
 	file.close();
 	std::cout << "Klar!" << std::endl;
 }
+
+
+// update
